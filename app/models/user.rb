@@ -6,7 +6,6 @@ class User < ActiveRecord::Base
   validates :password, presence: true, length: {minimum: 6}, allow_nil: true
   
   has_many :grades
-  has_many :degrees
   has_many :courses, through: :grades 
   has_many :teaching_courses, class_name: "Course", foreign_key: :teacher_id
   # VAILD_NUM_REGEX = /\A[0-9]+\z/
