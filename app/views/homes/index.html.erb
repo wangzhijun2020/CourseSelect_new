@@ -1,0 +1,48 @@
+</div>
+<script>
+  $('#main_container').css("min-height","0");
+</script>
+
+<header class="page-header colored-background">
+</header>
+<section id="instruction">
+<div class="container">
+  <div class="row">
+    <div class="col-sm-5">
+        <h1>最新通知</h1>
+        <h6>Recent Notices</h6>
+        <p class="lead">
+          <% @notice.each do |notice| %>
+            <div>
+            <span class="glyphicon glyphicon-hand-right">
+              <%= link_to notice.title, notice_url(notice) %>
+            </span>
+              <span class="glyphicon glyphicon-calendar" style="float: right">
+                <%= notice.created_at.strftime('%Y-%m-%d %H:%M') %>
+              </span>
+            </div>
+            <br>
+        <% end %>
+        </p>
+    </div>
+    <div class="col-sm-1"></div>
+    <div class="col-sm-6">
+    <h1>校园活动</h1>
+    <h6> Campus Activities </h6>
+    <p class="lead">
+      <% @activity.each do |activity| %>
+        <div>
+          <span class="glyphicon glyphicon-education">
+            <%= activity.title %>            
+          </span>
+          <span style="float: right">
+            <%= "主讲人：" + activity.speaker+ " " + activity.when.split(' ')[0] %>
+          </span>
+        </div>
+        <br>
+    <% end %>
+    </p>
+    </div>
+  </div>
+</div>
+</section>
