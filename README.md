@@ -1,28 +1,29 @@
-# CourseSelect [![Build Status](https://travis-ci.org/PENGZhaoqing/CourseSelect.svg?branch=master)](https://travis-ci.org/PENGZhaoqing/CourseSelect)
-
-### [中文教程1](http://blog.csdn.net/ppp8300885/article/details/52594839) [中文教程2](http://blog.csdn.net/ppp8300885/article/details/52601560) [中文教程3](http://blog.csdn.net/ppp8300885/article/details/52669749)
+# 国科大教务在线 [![Build Status](https://travis-ci.org/PENGZhaoqing/CourseSelect.svg?branch=master)](https://travis-ci.org/PENGZhaoqing/CourseSelect)
 
 
-这个样本系统是基于国科大研究生课程 (高级软件工程) 开发的项目,目的是帮助入门者学习RoR (Ruby on Rails) 
+这个样本系统是基于国科大研究生课程 (高级软件工程) 开发的项目，作为该课程的期末课程设计作业
 
-适合新学者的入手的第一个项目 ([演示Demo戳这里](https://courseselect.herokuapp.com/ ))，入门者可以在这个样本系统上增加更多的功能:
+本次的课程设计已经部署在了Heroku云平台 ([演示Demo戳这里](https://couseselect.herokuapp.com/ ))
 
-* 处理选课冲突、控制选课人数
-* 统计选课学分，学位课等
-* 增加选课的开放、关闭功能
-* 自定义管理员后台
-* 基于OAuth的授权登陆
-* Excel格式的数据导入
-* 绑定用户邮箱（实现注册激活，忘记密码等）
-* 站内查找检索 （课程按分类查找，过滤等）
+###在进行优化之前，系统的功能包括：
 
-### 目前功能：
+- 查询成绩
+- 选课退课
+- 课程管理
+- 用户管理
+- 开课管理
+- 添加成绩
+- 多角色登陆（学生，老师，管理员）
 
-* 多角色登陆（学生，老师，管理员）
-* 学生动态选课，退课
-* 老师动态增加，删除课程
-* 老师对课程下的学生添加、修改成绩
-* 权限控制：老师和学生只能看到自己相关课程信息
+### 修改完成后包含的功能：
+
+* 教师开启/关闭选课按钮
+* 查看课表
+* 修改是/否学位课属性
+* 通知管理
+* 系统开关
+* 活动管理
+* 导出名单
 
 ### 截图
 
@@ -85,143 +86,61 @@ $ rails s
 
 账号中数字都可以替换成2,3...等等
 
+## 功能测试及展示
 
-## Heroku云部署
+### 管理员功能
 
-项目可直接在Heroku上免费部署
+- 发布通知以及校园活动公告
 
-1.fork此项目到自己Github账号下
+  <img src="/lib/admin_notice_1.png" width="700">
 
-2.创建Heroku账号以及Heroku app
+  <img src="/lib/admin_notice_2.png" width="700">
 
-3.将Heroku app与自己Github下的fork的项目进行连接
+- 关闭选课系统
 
-4.下载配置[Heroku CLI](https://devcenter.heroku.com/articles/heroku-command-line)命令行工具
+  <img src="/lib/admin_close_1.png" width="700">
 
-5.运行`heroku login`在终端登陆，检查与heroku app的远程连接情况`git config --list | grep heroku`，若未检查到相应的app，请看[这里](http://stackoverflow.com/questions/5129598/how-to-link-a-folder-with-an-existing-heroku-app)
+  <img src="/lib/admin_close_2.png" width="700">
 
-6.运行部署，详情[请戳这里](https://devcenter.heroku.com/articles/getting-started-with-rails4#rails-asset-pipeline)
+- 设置选课人数限制
 
+  <img src="/lib/admin_limit_1.png" width="700">
 
-## 本地测试
+  <img src="/lib/admin_limit_2.png" width="700">
 
-本项目包含了部分的测试（integration/fixture/model test），测试文件位于/test目录下。一键运行所有测试使用`rake test`：
+### 教师功能
 
-```
-PENG-MacBook-Pro:IMS_sample PENG-mac$ rake test
-Run options: --seed 15794
+- Excel文件数据导入导出
 
-# Running:
-.........
+  <img src="/lib/teacher_upload_1.png" width="700">
 
-Finished in 1.202169s, 7.4865 runs/s, 16.6366 assertions/s.
+  <img src="/lib/teacher_upload_2.png" width="700">
 
-9 runs, 20 assertions, 0 failures, 0 errors, 0 skips
-```
+  <img src="/lib/teacher_upload_3.png" width="700">
 
-### 模型测试
+  <img src="/lib/teacher_upload_4.png" width="700">
 
-以用户模型为例, 位于`test/models/user_test.rb`, 首先生成一个`@user`对象，然后`assert`用户是否有效，这里的调用`valid`方法会去检查你的模型中的相关的`validates`语句是否正确，若`@user.valid?`为false, 那么此`assert`会报错，代表`"should be valid"`这条测试没有通过, 单独运行此测试文件使用`rake test test/models/user_test.rb`
+- 查看通知
 
+  <img src="/lib/teacher_notice.png" width="700">
 
-```
-class UserTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+### 学生功能
 
-  def setup
-    @user = User.new(name: "Example User", email: "user@example.com", password: "password", password_confirmation: "password")
-  end
+- 查看课程表
 
-  test "should be valid" do
-    assert  @user.valid?
-  end
+  <img src="/lib/student_schedule.png" width="700">
 
-  ...
+  <img src="/lib/student_conflict.png" width="700">
 
-end
-```
+  <img src="/lib/student_credit.png" width="700">
 
-### 视图和控制器测试
+- 设置学位课
 
-以用户登录为例，位于`test/integration/user_login_test.rb`，首先同样生成一个@user模型，这个@user的用户名和密码可以在`test/fixtures/users.yml`中指定, 然后我们用get方法到达登录页面（sessions_login_path），然后使用post方法提交这个@user的账号密码来登录，如果登录成功，当前应该会跳转至homes控制器下的index方法进行处理，`assert_redirected_to`能判断这个跳转过程是否发生，然后调用`follow_redirect！`来紧跟当前的跳转，用`assert_template`来判读跳转后的视图文件是否为`homes/index`, 最后在这个视图文件下做一些测试，比如判断这个视图下连接为root_path的个数等等（根据当前登录的角色不同，当前的页面链接会不同，比如admin用户就会有控制面板的链接rails_admin_path，而普通用户没有，因此可以根据链接的个数来判断当前登录用户的角色）
+  <img src="/lib/student_degree_1.png" width="700">
 
-```
-class UserLoginTest < ActionDispatch::IntegrationTest
-
-  def setup
-    @user = users(:peng)
-  end
-
-  test "login with valid information" do
-    get sessions_login_path
-    post sessions_login_path(params: {session: {email: @user.email, password: 'password'}})
-    assert_redirected_to controller: :homes, action: :index
-    follow_redirect!
-    assert_template 'homes/index'
-    assert_select "a[href=?]", root_path, count: 2
-    assert_select "a[href=?]", rails_admin_path, count: 0
-  end
-end
-```
-
-### 测试涵盖率检测
-
-我们可以使用[simplecov](https://github.com/colszowka/simplecov/)库来检测我们编写的测试对于我们的项目是否完整，步骤如下：
-
-1. 在Gemfile文件中导入simplecov库：`gem 'simplecov', :require => false, :group => :test`，然后`bundle install`安装
-2. 在test/test_helper.rb的最前面加入simplecov的启动代码（这里默认使用rails自带的test框架，simplecov也支持其他测试框架如rspec，那么启动代码导入的位置请参考simplecov的官方文档）
-
-  ```
-  # 注意这里必须在 require rails/test_help 之前加入，否则不会生效
-  require 'simplecov'
-  SimpleCov.start 'rails'
-
-  ENV['RAILS_ENV'] ||= 'test'
-  require File.expand_path('../../config/environment', __FILE__)
-  require 'rails/test_help'
-
-  class ActiveSupport::TestCase
-    # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
-    fixtures :all
-
-    # Add more helper methods to be used by all tests here...
-  end
-  ```
-
-3. 运行`rake test`,成功后会根目录的coverage下生成一个index.html文件，用浏览器打开能看到结果如下：
-
-  <img src="/lib/screenshot5.png" width="700">  
-
-  <img src="/lib/screenshot6.png" width="700">  
+  <img src="/lib/student_degree_2.png" width="700">
 
 
-## Travis CI 线上自动测试
-
-上述为本地测试，我们可以使用Travis CI来实现自动测试，首先申请一个Travis CI的账号，然后与自己的github连接起来，接着在自己项目根目录中增加一个新的文件`.travis.yml`如下，这个文件中指定了测试需要的ruby版本，数据库等配置以及一些测试前的脚本操作，当你的github发生更新后，Travis CI会自动触发测试（需要你在Travis CI中自己设置自动/手动触发），然后读取你的`.travis.yml`文件配置进行测试，其实也就是把本地测试拉到服务器上进行，测试成功后会在你的github项目给一个buliding pass的标签（见CourseSelect题目旁边），代表当前的代码是通过测试的
-
-```
-language: ruby
-
-rvm:
-  - 2.2
-
-env:
-  - DB=pgsql
-
-services:
-  - postgresql
-
-script:
-  - RAILS_ENV=test bundle exec rake db:migrate --trace
-  - bundle exec rake db:test:prepare
-  - bundle exec rake
-
-before_script:
-  - cp config/database.yml.travis config/database.yml
-  - psql -c 'create database courseselect_test;' -U postgres
-```
 
 ## How to Contribute
 
