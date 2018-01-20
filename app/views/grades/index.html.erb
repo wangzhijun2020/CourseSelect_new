@@ -23,14 +23,19 @@
             <thead>
 
             <tr>
-              <th>学号</th>
-              <th>姓名</th>
-              <th>专业</th>
+            <%if student_logged_in? %>
               <th>课程名</th>
               <th>学时学分</th>
               <th>授课老师</th>
               <th>分数</th>
+              <th>名次/总人数</th>
+            <%end%>
+
             <% if teacher_logged_in? %>
+              <th>学号</th>
+              <th>姓名</th>
+              <th>专业</th>
+              <th>分数</th>
                 <th><%= link_to "导出", grades_export_path(:course_id=>@course.id,:format => :xls),class: "btn btn-success btn-xs" %>
 
                 </th>
@@ -46,17 +51,29 @@
                       <%next%>
                     <%elsif grade.grade>=60 %>
                       <%user_credit=user_credit+grade.course.credit.split('/').at(1).to_i %>
+                    <%end%> 
+                    <%rank=1%>
+                    <%count=0%>
+                    <%grade.course.grades.each do |tmp_grade| %>
+                      <%if tmp_grade.grade.nil?%>
+                        <%next%>
+                      <%elsif tmp_grade.grade > grade.grade%>
+                        <%rank=rank+1%>
+                      <%end%>
+                      <%count=count+1%>
                     <%end%>
-                <%end%>
-                  <td><%= grade.user.num %></td>
-                  <td><%= grade.user.name %></td>
-                  <td><%= grade.user.major %></td>
+
                   <td><%= grade.course.name %></td>
                   <td><%= grade.course.credit %></td>
                   <td><%= grade.course.teacher.name %></td>
                   <td><%= grade.grade %></td>
-                                      
+                  <td><%= rank %> / <%=count%> </td>
+                  <%end%>                                      
                   <% if teacher_logged_in? %>
+                  <td><%= grade.user.num %></td>
+                  <td><%= grade.user.name %></td>
+                  <td><%= grade.user.major %></td>
+                  <td><%= grade.grade %></td>
                       <%= form_for grade, url: grade_url(id: grade.id, course_id: grade.course.id), method: :patch do |f| %>
                           <td><%= f.text_field :grade %></td>
                           <td><%= f.submit "提交", class: "btn btn-success btn-xs" %></td>
