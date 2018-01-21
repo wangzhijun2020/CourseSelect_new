@@ -17,13 +17,15 @@
 
 ### 修改完成后包含的功能：
 
+* 管理员发布通知
+* 管理员发布校园活动
+* 管理员开放/关闭选课系统
+* 管理员系统界面的汉化
+* 教师对选课学生成绩单导入导出
 * 教师开启/关闭选课按钮
-* 查看课表
-* 修改是/否学位课属性
-* 通知管理
-* 系统开关
-* 活动管理
-* 导出名单
+* 学生查看课表
+* 学生修改是/否学位课属性
+* 学生查看成绩UI设计美化
 
 ### 截图
 
@@ -62,6 +64,29 @@ $ rails s
 ```
 
 在浏览器中输入`localhost:3000`访问主页
+
+
+## 将开发的选课系统部署到Heroku平台
+```
+
+ heroku run rake db:migrate VERSION=0
+ heroku run rake db:migrate
+ heroku run rake db:seed
+ 
+ git push -u origin master
+ 
+ 
+ https://couseselect.herokuapp.com/
+ 
+ heroku login
+ heroku cerate couseselect
+ git commit -a -m '-version'
+ git push heroku master
+ heroku run rake db:migrate
+ heroku run rake db:seed
+ 
+ https://couseselect.herokuapp.com/
+```
 
 ## 使用
 
@@ -106,15 +131,26 @@ $ rails s
 
   <img src="/lib/admin_limit_1.png" width="700">
 
+  <img src="/lib/admin_limit_3.png" width="700">
+
   <img src="/lib/admin_limit_2.png" width="700">
+
+- 管理员用户界面汉化
+
+  <img src="/lib/admin_translate.png" width="700">
+
 
 ### 教师功能
 
 - Excel文件数据导入导出
 
   <img src="/lib/teacher_upload_1.png" width="700">
+  
+  点击导出后，系统将生成一个Excel文件并提示保存到本地
 
   <img src="/lib/teacher_upload_2.png" width="700">
+  
+  在Excel文件中修改学生选课成绩的数据
 
   <img src="/lib/teacher_upload_3.png" width="700">
 
