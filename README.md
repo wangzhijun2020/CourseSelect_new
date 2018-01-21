@@ -131,13 +131,13 @@ $ rails s
 
   <img src="/lib/admin_limit_1.png" width="700">
 
-  <img src="/lib/admin_limit_3.png" width="700">
+  <img src="/lib/admin_limit_3.png" width="700">
 
   <img src="/lib/admin_limit_2.png" width="700">
 
 - 管理员用户界面汉化
 
-  <img src="/lib/admin_translate.png" width="700">
+  <img src="/lib/admin_translate.png" width="700">
 
 
 ### 教师功能
