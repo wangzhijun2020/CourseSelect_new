@@ -1,3 +1,4 @@
+```
 # 国科大教务在线 [![Build Status](https://travis-ci.org/PENGZhaoqing/CourseSelect.svg?branch=master)](https://travis-ci.org/PENGZhaoqing/CourseSelect)
 
 
@@ -440,3 +441,5 @@ $ rails s
 
 如果觉得好，给项目点颗星吧～
 
+
+```
