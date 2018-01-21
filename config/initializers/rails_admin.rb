@@ -2,7 +2,7 @@ RailsAdmin.config do |config|
 
   # config.main_app_name = ["Cool app", "BackOffice"]
   # or something more dynamic
-  config.main_app_name = Proc.new { |controller| ["CourseSelect", "控制面板"] }
+  config.main_app_name = Proc.new { |controller| ["教务在线", "控制面板"] }
 
   # config.authorize_with :cancan, AdminAbility
 

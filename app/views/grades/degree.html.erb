@@ -16,9 +16,6 @@
             <thead>
 
             <tr>
-              <th>学号</th>
-              <th>姓名</th>
-              <th>专业</th>
               <th>课程名</th>
               <th>学时学分</th>
               <th>授课老师</th>
@@ -29,13 +26,14 @@
 
             <% @grades.each do |grade| %>
                 <tr>
-                  <td><%= grade.user.num %></td>
-                  <td><%= grade.user.name %></td>
-                  <td><%= grade.user.major %></td>
                   <td><%= grade.course.name %></td>
                   <td><%= grade.course.credit %></td>
                   <td><%= grade.course.teacher.name %></td>
-                  <td><%= grade.degree %></td>
+                  <%if grade.degree==true%>
+                  <td>是</td>
+                  <%else%>
+                  <td>否</td>
+                  <%end%>
                   <%@grade=grade%>
                       <% if grade.degree? %>
                           <td><%= link_to "设为非学位课", grades_degree0_path(id:@grade.id), class: 'btn btn-xs btn-info' %></td>
