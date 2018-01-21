@@ -439,5 +439,3 @@ $ rails s
 提问请到issues里创建，欢迎contributor！
 
 如果觉得好，给项目点颗星吧～
-
-
