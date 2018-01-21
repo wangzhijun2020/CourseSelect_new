@@ -25,6 +25,7 @@
 * 教师开启/关闭选课按钮
 * 学生查看课表
 * 学生修改是/否学位课属性
+* 学生显示修读课程成绩排名
 * 学生查看成绩UI设计美化
 
 ### 截图
@@ -175,6 +176,11 @@ $ rails s
   <img src="/lib/student_degree_1.png" width="700">
 
   <img src="/lib/student_degree_2.png" width="700">
+  
+- 查看修读课程成绩排名
+  
+  <img src="/lib/student_rank.png" width="700">
+
 
 
 
