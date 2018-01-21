@@ -1,4 +1,4 @@
-```
+
 # 国科大教务在线 [![Build Status](https://travis-ci.org/PENGZhaoqing/CourseSelect.svg?branch=master)](https://travis-ci.org/PENGZhaoqing/CourseSelect)
 
 
@@ -56,21 +56,20 @@
 
 在终端（MacOS或Linux）中执行以下代码
 
-​```
+```
 $ git clone https://github.com/PENGZhaoqing/CourseSelect
 $ cd CourseSelect
 $ bundle install
 $ rake db:migrate
 $ rake db:seed
 $ rails s 
-​```
+```
 
 在浏览器中输入`localhost:3000`访问主页
 
 
 ## 将开发的选课系统部署到Heroku平台
-​```
-
+```
  heroku run rake db:migrate VERSION=0
  heroku run rake db:migrate
  heroku run rake db:seed
@@ -88,7 +87,7 @@ $ rails s
  heroku run rake db:seed
 
  https://couseselect.herokuapp.com/
-​```
+```
 
 ## 使用
 
@@ -442,4 +441,3 @@ $ rails s
 如果觉得好，给项目点颗星吧～
 
 
-```
