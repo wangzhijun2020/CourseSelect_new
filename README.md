@@ -70,14 +70,6 @@ $ rails s
 
 ## 将开发的选课系统部署到Heroku平台
 ```
- heroku run rake db:migrate VERSION=0
- heroku run rake db:migrate
- heroku run rake db:seed
-
- git push -u origin master
-
-
- https://couseselect.herokuapp.com/
 
  heroku login
  heroku cerate couseselect
