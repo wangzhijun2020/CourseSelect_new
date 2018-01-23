@@ -77,9 +77,8 @@ $ rails s
  heroku run rake db:migrate
  heroku run rake db:seed
 
- https://couseselect.herokuapp.com/
 ```
-
+输入https://couseselect.herokuapp.com/ 可以访问系统
 ## 使用
 
 1.学生登陆：
